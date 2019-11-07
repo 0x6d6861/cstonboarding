@@ -18,6 +18,9 @@ router.get('/', async function(req, res, next) {
 router.post('/login', (req,res) => {
   const phone = req.body.phone;
   const password = req.body.password;
+
+  const errors = {};
+
   Personnel.findOne({
     where: {personnel_phone: phone}
   }).then(user => {
