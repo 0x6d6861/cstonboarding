@@ -1,18 +1,18 @@
+'use strict';
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
 const passport = require('passport');
-
 const indexRouter = require('./app/routes/index');
 const personnelRouter = require('./app/routes/personnel');
 const taskRouter = require('./app/routes/task');
-
 const app = express();
+
 app.use(passport.initialize());
-passport.use(require('./app/configs/passport'));
+passport.use(require('./app/utils/passport'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
