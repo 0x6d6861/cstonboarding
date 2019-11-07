@@ -1,6 +1,5 @@
-const bcrypt = require('bcryptjs');
-
 'use strict';
+const bcrypt = require('bcryptjs');
 module.exports = (sequelize, DataTypes) => {
     const Personnel = sequelize.define('Personnel', {
         personnel_id: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
