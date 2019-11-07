@@ -4,7 +4,6 @@ var router = express.Router();
 const jwt = require('jsonwebtoken');
 
 const Personnel = require('../../models/index').Personnel;
-const Task = require('../../models/index').Task;
 const secret = process.env.SECRET || 'F$v4w84cNX7^-dR6';
 
 

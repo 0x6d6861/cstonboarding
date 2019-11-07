@@ -6,14 +6,12 @@ const logger = require('morgan');
 
 const passport = require('passport');
 
-
 const indexRouter = require('./app/routes/index');
-const usersRouter = require('./app/routes/users');
+const personnelRouter = require('./app/routes/personnel');
+const taskRouter = require('./app/routes/task');
 
 const app = express();
-
 app.use(passport.initialize());
-
 passport.use(require('./app/configs/passport'));
 
 // view engine setup
@@ -27,7 +25,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
-app.use('/users', usersRouter);
+app.use('/personnel', personnelRouter);
+app.use('/tasks', passport.authenticate('jwt', {session: false}), taskRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
