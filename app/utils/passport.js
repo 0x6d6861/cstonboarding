@@ -39,8 +39,6 @@ const opts = {
 
 passport.use(new Strategy(opts, (payload, done) => {
 
-    console.log("Strategy", payload);
-
     return Personnel.findOne({
         where: {personnel_id: payload.id}
     }).then(personnel => {

@@ -1,14 +1,14 @@
 'use strict';
-
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 
+const cors = require('cors');
+
 const JWTSTrategy = require('./app/utils/passport');
 const { passportMiddleware } = require('./app/utils/middleware');
-
 
 const passport = require('passport');
 const indexRouter = require('./app/routes/index');
@@ -16,6 +16,8 @@ const personnelRouter = require('./app/routes/personnel');
 const taskRouter = require('./app/routes/task');
 
 const app = express();
+app.use(cors());
+
 
 require('./app/utils/passport');
 app.use(passport.initialize());
